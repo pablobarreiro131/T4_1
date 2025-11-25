@@ -6,6 +6,12 @@ class SeleccionProducto extends ChangeNotifier{
   final List<Producto> todosProductos = mockProductos;
   final Map<Producto, int> _productosSeleccionados = {};
 
+    SeleccionProducto({Map<Producto, int>? productosIniciales}) {
+    if (productosIniciales != null) {
+      _productosSeleccionados.addAll(productosIniciales);
+    }
+  }
+
   Map<Producto, int> get productosSeleccionados => _productosSeleccionados;
 
   void cambiarEstadoProducto(Producto p){

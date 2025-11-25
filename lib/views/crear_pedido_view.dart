@@ -20,7 +20,12 @@ class _CrearPedidoViewState extends State<CrearPedidoView> {
   void _irASeleccionProductos() async {
     final result = await Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const SeleccionProductoView()),
+      MaterialPageRoute(
+        builder: (context) => SeleccionProductoView(
+          productosIniciales:
+              vm.productosPedido, // PASAMOS LOS PRODUCTOS ACTUALES
+        ),
+      ),
     );
 
     if (result != null && mounted) {
