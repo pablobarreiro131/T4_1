@@ -23,7 +23,7 @@ class _CrearPedidoViewState extends State<CrearPedidoView> {
       MaterialPageRoute(
         builder: (context) => SeleccionProductoView(
           productosIniciales:
-              vm.productosPedido, // PASAMOS LOS PRODUCTOS ACTUALES
+              vm.productosPedido,
         ),
       ),
     );
