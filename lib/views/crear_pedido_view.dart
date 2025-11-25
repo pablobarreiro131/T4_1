@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-// IMPORTA TUS MODELOS Y VM
 import '../models/producto.dart';
-import '../models/orden.dart';
-import '../viewmodels/crear_orden.dart'; // Ajusta el nombre si es diferente
+import '../models/pedido.dart';
+import '../viewmodels/crear_pedido.dart';
 import 'seleccion_producto_view.dart';
-
-// IMPORTA LOS NUEVOS WIDGETS
 import 'widgets/inputmesa.dart';
 import 'widgets/listaproductosseleccionados.dart';
 import 'widgets/footer.dart';
@@ -18,7 +15,7 @@ class CrearPedidoView extends StatefulWidget {
 }
 
 class _CrearPedidoViewState extends State<CrearPedidoView> {
-  final CrearOrden vm = CrearOrden();
+  final CrearPedido vm = CrearPedido();
 
   void _irASeleccionProductos() async {
     final result = await Navigator.push(
@@ -27,65 +24,79 @@ class _CrearPedidoViewState extends State<CrearPedidoView> {
     );
 
     if (result != null && mounted) {
-      vm.actualizarProductos(result as List<Producto>);
+      final productos = result as Map<Producto, int>;
+      vm.actualizarProductos(productos);
     }
   }
 
   void _guardarPedido() {
-    final orden = vm.crearOrden();
-    Navigator.pop(context, orden);
+    final pedido = vm.crearPedido();
+    if (pedido != null) {
+      Navigator.pop(context, pedido);
+    }
   }
 
   void _verResumen() {
-    final ordenPreview = Orden(
-      id: 0,
-      idMesa: vm.idMesa.isEmpty ? "Sin Nombre" : vm.idMesa,
-      productos: vm.productosOrden,
-      fecha: DateTime.now(),
-    );
-
-    Navigator.pushNamed(context, '/resumen', arguments: ordenPreview);
+    final pedido = vm.crearPedido();
+    if (pedido != null) {
+      Navigator.pushNamed(context, '/resumen', arguments: pedido);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Nuevo Pedido'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.receipt_long),
-            tooltip: 'Ver Resumen',
-            onPressed: _verResumen,
+        title: const Text('Crear Pedido'),
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        foregroundColor: Colors.white,
+      ),
+      body: Column(
+        children: [
+          InputNombreMesa(onChanged: (valor) => vm.setIdMesa(valor)),
+          const SizedBox(height: 16),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: ElevatedButton.icon(
+              icon: const Icon(Icons.add_shopping_cart),
+              label: ListenableBuilder(
+                listenable: vm,
+                builder: (context, child) {
+                  return Text(
+                    vm.productosPedido.isEmpty
+                        ? 'Añadir productos'
+                        : 'Productos (${vm.productosPedido.length})',
+                  );
+                },
+              ),
+              onPressed: _irASeleccionProductos,
+              style: ElevatedButton.styleFrom(
+                minimumSize: const Size(double.infinity, 50),
+              ),
+            ),
+          ),
+          const SizedBox(height: 16),
+          Expanded(
+            child: ListenableBuilder(
+              listenable: vm,
+              builder: (context, child) {
+                return ListaProductosSeleccionados(
+                  productos: vm.productosPedido,
+                );
+              },
+            ),
           ),
         ],
       ),
-      body: ListenableBuilder(
+      bottomNavigationBar: ListenableBuilder(
         listenable: vm,
         builder: (context, child) {
-          return Column(
-            children: [
-              InputNombreMesa(onChanged: vm.setIdMesa),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                child: ElevatedButton.icon(
-                  icon: const Icon(Icons.add_shopping_cart),
-                  label: const Text('Seleccionar Productos'),
-                  onPressed: _irASeleccionProductos,
-                ),
-              ),
-              Expanded(
-                child: ListaProductosSeleccionados(
-                  productos: vm.productosOrden,
-                ),
-              ),
-              FooterAcciones(
-                total: vm.total,
-                esValido: vm.esValida,
-                onGuardar: _guardarPedido,
-                onCancelar: () => Navigator.pop(context),
-              ),
-            ],
+          return FooterAcciones(
+            total: vm.total,
+            esValido: vm.esValida,
+            onGuardar: _guardarPedido,
+            onCancelar: () => Navigator.pop(context),
+            onVerResumen: _verResumen,
           );
         },
       ),

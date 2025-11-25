@@ -1,18 +1,28 @@
 import 'package:flutter/material.dart';
-import '../../models/producto.dart'; // Ajusta la ruta según donde tengas tus modelos
+import '../../models/producto.dart';
 
 class ListaProductosSeleccionados extends StatelessWidget {
-  final List<Producto> productos;
+  final Map<Producto, int> productos;
 
-  const ListaProductosSeleccionados({super.key, required this.productos});
+  const ListaProductosSeleccionados({
+    super.key,
+    required this.productos,
+  });
 
   @override
   Widget build(BuildContext context) {
     if (productos.isEmpty) {
-      return const Center(
-        child: Text(
-          'No hay productos seleccionados',
-          style: TextStyle(color: Colors.grey),
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.shopping_cart_outlined, size: 80, color: Colors.grey[400]),
+            const SizedBox(height: 16),
+            Text(
+              'No hay productos seleccionados',
+              style: TextStyle(color: Colors.grey[600], fontSize: 16),
+            ),
+          ],
         ),
       );
     }
@@ -21,11 +31,30 @@ class ListaProductosSeleccionados extends StatelessWidget {
       itemCount: productos.length,
       separatorBuilder: (_, __) => const Divider(height: 1),
       itemBuilder: (context, index) {
-        final prod = productos[index];
+        final entry = productos.entries.elementAt(index);
+        final producto = entry.key;
+        final cantidad = entry.value;
+        final subtotal = producto.precio * cantidad;
+
         return ListTile(
-          leading: const Icon(Icons.fastfood, size: 20, color: Colors.orange),
-          title: Text(prod.nombre),
-          trailing: Text('${prod.precio.toStringAsFixed(2)} €'),
+          leading: CircleAvatar(
+            backgroundColor: Theme.of(context).colorScheme.primary,
+            foregroundColor: Colors.white,
+            child: Text('$cantidad'),
+          ),
+          title: Text(producto.nombre),
+          subtitle: Text(
+            '${producto.precio.toStringAsFixed(2)} € × $cantidad',
+            style: const TextStyle(fontSize: 12),
+          ),
+          trailing: Text(
+            '${subtotal.toStringAsFixed(2)} €',
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+              color: Colors.green,
+            ),
+          ),
           dense: true,
         );
       },

@@ -4,16 +4,30 @@ import 'package:t4_1/models/producto.dart';
 
 class SeleccionProducto extends ChangeNotifier{
   final List<Producto> todosProductos = mockProductos;
-  final List<Producto> _productosSeleccionados = [];
+  final Map<Producto, int> _productosSeleccionados = {};
 
-  List<Producto> get productosSeleccionados => _productosSeleccionados;
+  Map<Producto, int> get productosSeleccionados => _productosSeleccionados;
 
   void cambiarEstadoProducto(Producto p){
-    if(productosSeleccionados.contains(p)){
-      productosSeleccionados.remove(p);
-    } else productosSeleccionados.add(p);
+    if(_productosSeleccionados.containsKey(p)){
+      _productosSeleccionados.remove(p);
+    } else _productosSeleccionados[p] = 1;
     notifyListeners();
   }
 
-  bool estaSeleccionado(Producto p) => productosSeleccionados.contains(p);
+  void aumentarCantidad(Producto p){
+    if(_productosSeleccionados.containsKey(p)){
+      _productosSeleccionados[p] = _productosSeleccionados[p]! + 1;
+      notifyListeners();
+    }
+  }
+
+  void disminuirCantidad(Producto p){
+    if(_productosSeleccionados.containsKey(p) && _productosSeleccionados[p]! > 1){
+      _productosSeleccionados[p] = _productosSeleccionados[p]! - 1;
+      notifyListeners();
+    }
+  }
+
+  bool estaSeleccionado(Producto p) => _productosSeleccionados.containsKey(p);
 }

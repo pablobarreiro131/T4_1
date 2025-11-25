@@ -1,12 +1,12 @@
 import 'package:t4_1/models/producto.dart';
 
-class Orden {
+class Pedido {
   final int id;
   final String idMesa;
-  final List<Producto> productos;
+  final Map<Producto, int> productos;
   final DateTime fecha;
 
-  Orden({
+  Pedido({
     required this.id,
     required this.idMesa,
     required this.productos,
@@ -14,8 +14,8 @@ class Orden {
   });
 
   double get total {
-    return productos.fold(0.0, (sum, item) => sum + item.precio);
+    return productos.entries.fold(0.0, (sum, entry) => sum + entry.key.precio * entry.value);
   }
 
-  int get totalItems => productos.length;
+  int get totalItems => productos.values.fold(0, (sum, cantidad) => sum + cantidad);
 }
