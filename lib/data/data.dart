@@ -16,9 +16,17 @@ final List<Producto> mockProductos = [
   Producto(id: 13, nombre: 'Café con Leche (Marcilla)', precio: 1.60),
   Producto(id: 14, nombre: 'Té Lipton', precio: 1.80),
   Producto(id: 15, nombre: 'Zumo Don Simón', precio: 1.80),
-  Producto(id: 16, nombre: 'Bocadillo de Jamón Serrano (Navidul)', precio: 5.50),
+  Producto(
+    id: 16,
+    nombre: 'Bocadillo de Jamón Serrano (Navidul)',
+    precio: 5.50,
+  ),
   Producto(id: 17, nombre: 'Patatas Bravas (Ybarra)', precio: 4.00),
   Producto(id: 18, nombre: 'Tortilla de Patatas (La Cocinera)', precio: 4.80),
-  Producto(id: 19, nombre: 'Cerveza Alhambra Especial (botellín)', precio: 2.20),
+  Producto(
+    id: 19,
+    nombre: 'Cerveza Alhambra Especial (botellín)',
+    precio: 2.20,
+  ),
   Producto(id: 20, nombre: 'Vermut Yzaguirre Rojo', precio: 3.00),
 ];

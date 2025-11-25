@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:t4_1/models/producto.dart';
-import 'package:t4_1/viewmodels/seleccion_producto.dart';
+import '../../models/producto.dart';
+import '../viewmodels/seleccion_producto.dart';
 
 class SeleccionProductoView extends StatefulWidget {
   const SeleccionProductoView({super.key});
@@ -50,7 +50,8 @@ class _SeleccionProductoViewState extends State<SeleccionProductoView> {
       floatingActionButton: ListenableBuilder(
         listenable: viewmodel,
         builder: (context, child) {
-          return viewmodel.productosSeleccionados.isNotEmpty ? FloatingActionButton.extended(
+          return viewmodel.productosSeleccionados.isNotEmpty
+              ? FloatingActionButton.extended(
                   label: const Text("Confirmar"),
                   icon: const Icon(Icons.check),
                   onPressed: () {

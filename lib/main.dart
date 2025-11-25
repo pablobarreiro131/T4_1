@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:t4_1/views/resumen_pedido_view.dart';
+import 'views/home_view.dart';
+import 'views/resumen_pedido_view.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(const MyApp());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: const Scaffold(
-        body: Center(
-          child: Text('Home'),
-        ),
+      debugShowCheckedModeBanner: false,
+      title: 'BarCommand Pro',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
+        useMaterial3: true,
       ),
-      routes: {
-        '/resumen': (context) => const ResumenPedidoView(),
-      },
+      home: const HomeView(),
+      routes: {'/resumen': (context) => const ResumenPedidoView()},
     );
   }
 }
