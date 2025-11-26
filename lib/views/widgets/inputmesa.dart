@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../data/appcolors.dart';
 
 class InputNombreMesa extends StatelessWidget {
   final Function(String) onChanged;
@@ -7,14 +8,22 @@ class InputNombreMesa extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0, bottom: 8.0),
+    return Container(
+      padding: const EdgeInsets.all(16.0),
       child: TextField(
-        decoration: const InputDecoration(
+        decoration: InputDecoration(
           labelText: 'Introduce la mesa...',
-          border: OutlineInputBorder(),
-          prefixIcon: Icon(Icons.table_restaurant),
+          labelStyle: const TextStyle(color: AppColors.textOnLight),
+          border: const OutlineInputBorder(),
+          prefixIcon: const Icon(Icons.table_restaurant, color: AppColors.textOnLight),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: AppColors.textOnLight.withOpacity(0.3)),
+          ),
+          focusedBorder: const OutlineInputBorder(
+            borderSide: BorderSide(color: AppColors.primary, width: 2),
+          ),
         ),
+        style: const TextStyle(color: AppColors.textOnLight),
         onChanged: onChanged,
       ),
     );

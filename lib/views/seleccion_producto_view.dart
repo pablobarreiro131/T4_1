@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../models/producto.dart';
 import '../viewmodels/seleccion_producto.dart';
+import '../data/appcolors.dart';
 
 class SeleccionProductoView extends StatefulWidget {
   final Map<Producto, int>? productosIniciales;
@@ -23,8 +24,15 @@ class _SeleccionProductoViewState extends State<SeleccionProductoView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.backgroundSlate,
       appBar: AppBar(
-        title: const Text("Elige productos"),
+        title: const Text(
+          "Elige productos",
+          style: TextStyle(color: AppColors.textOnDark),
+        ),
+        centerTitle: true,
+        backgroundColor: AppColors.primary,
+        iconTheme: const IconThemeData(color: AppColors.textOnDark),
       ),
       body: ListenableBuilder(
         listenable: viewmodel,

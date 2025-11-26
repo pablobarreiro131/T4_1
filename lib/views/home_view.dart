@@ -10,22 +10,18 @@ class RecorteDerechoClipper extends CustomClipper<Path> {
     Path path = Path();
     path.lineTo(size.width, 0);
     
-    // 2. Bucle para el ZIG-ZAG en el lado DERECHO
     double y = 0;
-    double tamanoDiente = 12; // Altura de cada pico
-    double profundidad = 8;   // Cuánto entra el pico hacia la izquierda
+    double tamanoDiente = 12;
+    double profundidad = 8;
     
     while (y < size.height) {
-      // Punto "Adentro" (valle)
       path.lineTo(size.width - profundidad, y + (tamanoDiente / 2));
-      // Punto "Afuera" (pico)
       path.lineTo(size.width, y + tamanoDiente);
       y += tamanoDiente;
     }
 
-    // 3. Línea inferior y cierre
-    path.lineTo(0, size.height); // Línea recta inferior hasta la izquierda
-    path.lineTo(0, 0);           // Cierre subiendo por la izquierda
+    path.lineTo(0, size.height);
+    path.lineTo(0, 0);
     path.close();
     
     return path;
@@ -54,6 +50,14 @@ class _HomeViewState extends State<HomeView> {
       final nuevoPedido = result as Pedido;
       vm.agregarPedido(nuevoPedido);
     }
+  }
+
+    void _verResumenPedido(Pedido pedido) {
+    Navigator.pushNamed(
+      context,
+      '/resumen',
+      arguments: pedido,
+    );
   }
 
   @override
@@ -94,6 +98,7 @@ class _HomeViewState extends State<HomeView> {
                   child: Container(
                     padding: const EdgeInsets.only(right: 16.0),
                     child: ListTile(
+                      onTap: () => _verResumenPedido(pedido),
                       leading: Icon(
                         Icons.restaurant_menu,
                         color: AppColors.textOnLight,

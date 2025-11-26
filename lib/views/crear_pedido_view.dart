@@ -6,6 +6,7 @@ import 'seleccion_producto_view.dart';
 import 'widgets/inputmesa.dart';
 import 'widgets/listaproductosseleccionados.dart';
 import 'widgets/footer.dart';
+import '../data/appcolors.dart';
 
 class CrearPedidoView extends StatefulWidget {
   const CrearPedidoView({super.key});
@@ -50,8 +51,15 @@ class _CrearPedidoViewState extends State<CrearPedidoView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.backgroundSlate,
       appBar: AppBar(
-        title: const Text('Crear Pedido'),
+        title: const Text(
+          'Crear Pedido',
+          style: TextStyle(color: AppColors.textOnDark),
+        ),
+        centerTitle: true,
+        backgroundColor: AppColors.primary,
+        iconTheme: const IconThemeData(color: AppColors.textOnDark),
       ),
       body: Column(
         children: [
