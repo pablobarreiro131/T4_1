@@ -18,57 +18,33 @@ class FooterAcciones extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 10,
-            offset: const Offset(0, -2),
-          ),
-        ],
-      ),
+    return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+          Text('Total: ${total.toStringAsFixed(2)} €'),
+          const SizedBox(height: 8),
           Row(
             children: [
               Expanded(
-                child: OutlinedButton.icon(
-                  icon: const Icon(Icons.cancel_outlined),
-                  label: const Text('Cancelar'),
+                child: OutlinedButton(
                   onPressed: onCancelar,
-                  style: OutlinedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                  ),
+                  child: const Text('Cancelar'),
                 ),
               ),
               const SizedBox(width: 8),
               Expanded(
-                child: ElevatedButton.icon(
-                  icon: const Icon(Icons.visibility),
-                  label: const Text('Ver Resumen'),
+                child: ElevatedButton(
                   onPressed: esValido ? onVerResumen : null,
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    backgroundColor: Colors.blue,
-                    foregroundColor: Colors.white,
-                  ),
+                  child: const Text('Ver Resumen'),
                 ),
               ),
               const SizedBox(width: 8),
               Expanded(
-                child: ElevatedButton.icon(
-                  icon: const Icon(Icons.check_circle),
-                  label: const Text('Guardar'),
+                child: ElevatedButton(
                   onPressed: esValido ? onGuardar : null,
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    backgroundColor: Colors.green,
-                    foregroundColor: Colors.white,
-                  ),
+                  child: const Text('Guardar'),
                 ),
               ),
             ],

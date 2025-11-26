@@ -22,8 +22,7 @@ class _CrearPedidoViewState extends State<CrearPedidoView> {
       context,
       MaterialPageRoute(
         builder: (context) => SeleccionProductoView(
-          productosIniciales:
-              vm.productosPedido,
+          productosIniciales: vm.productosPedido,
         ),
       ),
     );
@@ -53,18 +52,15 @@ class _CrearPedidoViewState extends State<CrearPedidoView> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Crear Pedido'),
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        foregroundColor: Colors.white,
       ),
       body: Column(
         children: [
           InputNombreMesa(onChanged: (valor) => vm.setIdMesa(valor)),
-          const SizedBox(height: 16),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: ElevatedButton.icon(
-              icon: const Icon(Icons.add_shopping_cart),
-              label: ListenableBuilder(
+            padding: const EdgeInsets.all(16.0),
+            child: ElevatedButton(
+              onPressed: _irASeleccionProductos,
+              child: ListenableBuilder(
                 listenable: vm,
                 builder: (context, child) {
                   return Text(
@@ -74,13 +70,8 @@ class _CrearPedidoViewState extends State<CrearPedidoView> {
                   );
                 },
               ),
-              onPressed: _irASeleccionProductos,
-              style: ElevatedButton.styleFrom(
-                minimumSize: const Size(double.infinity, 50),
-              ),
             ),
           ),
-          const SizedBox(height: 16),
           Expanded(
             child: ListenableBuilder(
               listenable: vm,
