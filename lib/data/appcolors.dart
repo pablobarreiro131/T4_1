@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-
 class AppColors {
-  static const Color primary = Color(0xFF683F1E); 
-  static const Color accent = Color.fromARGB(255, 216, 66, 21); 
-  static const Color backgroundSlate = Color(0xFFF5DEB3); 
-  static const Color ticketPaper = Color(0xFFFDF5E6); 
-  static const Color textOnDark = Color(0xFFEFEBE9);
-  static const Color textOnLight = Color(0xFF3E2723);
-  static const Color success = Color(0xFF558B2F);
-  static const Color error = Color(0xFFC62828);
-  static const Color textBlack = Color(0xFF000000);
-  static const Color primaryTransparent = Color.fromARGB(131, 104, 63, 30); 
+  static const Color primary = Color(0xFF006D77); 
+  static const Color accent = Color(0xFFFF9F87); 
+  static const Color backgroundSlate = Color(0xFFFFF7EB); 
+  static const Color ticketPaper = Color(0xFFFFFFFF); 
+  static const Color textOnDark = Color(0xFFEDF6F9);
+  static const Color textOnLight = Color(0xFF2B2D42);
+  static const Color success = Color(0xFF83C5BE);
+  static const Color error = Color.fromARGB(255, 226, 124, 120);
+  static const Color textBlack = Color(0xFF1D1D1D);
+  static const Color primaryTransparent = Color(0x80006D77); 
 }

@@ -3,33 +3,8 @@ import '../viewmodels/home.dart';
 import '../models/pedido.dart';
 import 'crear_pedido_view.dart';
 import '../data/appcolors.dart';
+import '../resources/clippers.dart';
 
-class RecorteDerechoClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    Path path = Path();
-    path.lineTo(size.width, 0);
-    
-    double y = 0;
-    double tamanoDiente = 12;
-    double profundidad = 8;
-    
-    while (y < size.height) {
-      path.lineTo(size.width - profundidad, y + (tamanoDiente / 2));
-      path.lineTo(size.width, y + tamanoDiente);
-      y += tamanoDiente;
-    }
-
-    path.lineTo(0, size.height);
-    path.lineTo(0, 0);
-    path.close();
-    
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
-}
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -90,6 +65,9 @@ class _HomeViewState extends State<HomeView> {
                     'Aun no hay pedidos...',
                     style: TextStyle(color: AppColors.textOnLight),
                   ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 16.0),
+                  ),
                 ],
               ),
             );
@@ -106,6 +84,7 @@ class _HomeViewState extends State<HomeView> {
                 child: PhysicalShape(
                   color: AppColors.ticketPaper,
                   clipper: RecorteDerechoClipper(),
+                  elevation: 2,
                   child: Container(
                     padding: const EdgeInsets.only(right: 16.0),
                     child: ListTile(
@@ -128,13 +107,13 @@ class _HomeViewState extends State<HomeView> {
                           vertical: 4.0,
                         ),
                         decoration: BoxDecoration(
-                          color: AppColors.accent, // Fondo Marrón
-                          borderRadius: BorderRadius.circular(4.0), // Bordes redondeados
+                          color: AppColors.accent,
+                          borderRadius: BorderRadius.circular(4.0),
                         ),
                         child: Text(
                           '${pedido.total.toStringAsFixed(2)} €',
                           style: const TextStyle(
-                            color: AppColors.textOnDark, // Texto claro para contraste
+                            color: AppColors.textOnDark,
                             fontWeight: FontWeight.bold,
                           ),
                         ),

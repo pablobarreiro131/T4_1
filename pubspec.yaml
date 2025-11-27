@@ -17,3 +17,14 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  fonts:
+    - family: Jost
+      fonts:
+        - asset: lib/assets/fonts/Jost-Regular.ttf
+        - asset: lib/assets/fonts/Jost-Bold.ttf
+          weight: 700
+
+    - family: Lora
+      fonts:
+        - asset: lib/assets/fonts/Lora-Regular.ttf

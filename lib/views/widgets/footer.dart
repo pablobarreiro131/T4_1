@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../data/appcolors.dart';
+import '../../resources/clippers.dart';
 
 class FooterAcciones extends StatelessWidget {
   final double total;
@@ -19,22 +20,51 @@ class FooterAcciones extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppColors.ticketPaper,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 10,
-            offset: const Offset(0, -2),
-          ),
-        ],
-      ),
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Row(
+    return PhysicalShape(
+      color: AppColors.ticketPaper,
+      clipper: RecorteSuperiorClipper(),
+      elevation: 2,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(16.0, 24.0, 16.0, 16.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              padding: const EdgeInsets.fromLTRB(0, 0, 0, 8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'TOTAL A PAGAR:',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                      color: AppColors.textOnLight,
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12.0,
+                      vertical: 6.0,
+                    ),
+                    decoration: BoxDecoration(
+                      color: AppColors.accent,
+                      borderRadius: BorderRadius.circular(4.0),
+                    ),
+                    child: Text(
+                      '${total.toStringAsFixed(2)} €',
+                      style: const TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.textOnDark,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 8),
+            Row(
             children: [
               Expanded(
                 flex: 2,
@@ -66,43 +96,44 @@ class FooterAcciones extends StatelessWidget {
                     'Ver Resumen',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                   ),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primary,
-                    foregroundColor: AppColors.textOnDark,
-                    padding: const EdgeInsets.symmetric(vertical: 14),
-                    elevation: 3,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.primary,
+                      foregroundColor: AppColors.textOnDark,
+                      padding: const EdgeInsets.symmetric(vertical: 14),
+                      elevation: 3,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      disabledBackgroundColor: AppColors.textOnDark,
                     ),
-                    disabledBackgroundColor: AppColors.textOnDark,
                   ),
                 ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 8),
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton.icon(
-              onPressed: esValido ? onGuardar : null,
-              icon: const Icon(Icons.check_circle, size: 22),
-              label: const Text(
-                'Guardar Pedido',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-              ),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.success,
-                foregroundColor: AppColors.textOnDark,
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                elevation: 4,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+              ],
+            ),
+            const SizedBox(height: 8),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton.icon(
+                onPressed: esValido ? onGuardar : null,
+                icon: const Icon(Icons.check_circle, size: 22),
+                label: const Text(
+                  'Guardar Pedido',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                 ),
-                disabledBackgroundColor: AppColors.textOnDark,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.success,
+                  foregroundColor: AppColors.textOnDark,
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  elevation: 4,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  disabledBackgroundColor: AppColors.textOnDark,
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -1,28 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/pedido.dart';
 import '../data/appcolors.dart';
-
-class RecorteInferiorClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    Path path = Path();
-    path.lineTo(0, size.height);
-    double x = 0;
-    double tamanoDiente = 12;
-    double profundidad = 8;
-    while (x < size.width) {
-      path.lineTo(x + (tamanoDiente / 2), size.height - profundidad);
-      path.lineTo(x + tamanoDiente, size.height);
-      x += tamanoDiente;
-    }
-    path.lineTo(size.width, 0);
-    path.close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
-}
+import '../resources/clippers.dart';
 
 class ResumenPedidoView extends StatelessWidget {
   static const routeName = '/resumen';
@@ -49,7 +28,7 @@ class ResumenPedidoView extends StatelessWidget {
         child: PhysicalShape(
           color: AppColors.ticketPaper,
           clipper: RecorteInferiorClipper(),
-          elevation: 4,
+          elevation: 2,
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(

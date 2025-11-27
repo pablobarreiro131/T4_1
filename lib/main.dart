@@ -16,9 +16,16 @@ class MyApp extends StatelessWidget {
       title: 'Bar',
       theme: ThemeData(
         useMaterial3: true,
+        fontFamily: 'Lora',
+        textTheme: const TextTheme(
+          titleLarge: TextStyle(fontFamily: 'Jost', fontWeight: FontWeight.w600),
+        ),
       ),
-      home: const HomeView(),
-      routes: {'/resumen': (context) => const ResumenPedidoView()},
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const HomeView(),
+        '/resumen': (context) => const ResumenPedidoView(),
+      },
     );
   }
 }
