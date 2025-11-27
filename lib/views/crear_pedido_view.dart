@@ -68,13 +68,27 @@ class _CrearPedidoViewState extends State<CrearPedidoView> {
             padding: const EdgeInsets.all(16.0),
             child: ElevatedButton(
               onPressed: _irASeleccionProductos,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColors.primary,
+              ),
               child: ListenableBuilder(
                 listenable: vm,
                 builder: (context, child) {
-                  return Text(
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.restaurant_outlined,
+                        color: AppColors.textOnDark,
+                      ),
+                      const SizedBox(width: 8),
+                      Text(
                     vm.productosPedido.isEmpty
                         ? 'Añadir productos'
                         : 'Productos (${vm.productosPedido.length})',
+                    style: const TextStyle(color: AppColors.textOnDark),
+                  ),
+                    ]
                   );
                 },
               ),

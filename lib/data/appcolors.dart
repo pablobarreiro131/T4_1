@@ -10,4 +10,5 @@ class AppColors {
   static const Color success = Color(0xFF558B2F);
   static const Color error = Color(0xFFC62828);
   static const Color textBlack = Color(0xFF000000);
+  static const Color primaryTransparent = Color.fromARGB(131, 104, 63, 30); 
 }

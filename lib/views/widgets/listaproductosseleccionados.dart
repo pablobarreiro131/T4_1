@@ -13,18 +13,26 @@ class ListaProductosSeleccionados extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (productos.isEmpty) {
-      return Container(
-        child: const Center(
-          child: Text(
-            'No hay productos seleccionados',
-            style: TextStyle(color: AppColors.textOnLight),
-          ),
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Icon(
+              Icons.fastfood_outlined,
+              color: AppColors.primaryTransparent,
+              size: 80,
+            ),
+            SizedBox(height: 8),
+            Text(
+              'Aun no hay productos seleccionados...',
+              style: TextStyle(color: AppColors.textOnLight),
+            )
+          ],
         ),
       );
     }
 
-    return Container(
-      child: ListView.separated(
+    return ListView.separated(
       itemCount: productos.length,
       separatorBuilder: (_, __) => const Divider(),
       itemBuilder: (context, index) {
@@ -46,8 +54,8 @@ class ListaProductosSeleccionados extends StatelessWidget {
             style: const TextStyle(color: AppColors.textOnLight),
           ),
           subtitle: Text(
-            '${producto.precio.toStringAsFixed(2)} € × $cantidad',
-            style: TextStyle(color: AppColors.textOnLight.withOpacity(0.7)),
+            '${producto.precio.toStringAsFixed(2)} € x $cantidad',
+            style: TextStyle(color: AppColors.textOnLight),
           ),
           trailing: Text(
             '${subtotal.toStringAsFixed(2)} €',
@@ -58,7 +66,6 @@ class ListaProductosSeleccionados extends StatelessWidget {
           ),
         );
       },
-      ),
     );
   }
 }

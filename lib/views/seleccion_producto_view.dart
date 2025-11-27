@@ -43,24 +43,30 @@ class _SeleccionProductoViewState extends State<SeleccionProductoView> {
               final producto = viewmodel.todosProductos[index];
               final estaSeleccionado = viewmodel.estaSeleccionado(producto);
               final cantidad = viewmodel.productosSeleccionados[producto] ?? 1;
-
               return ListTile(
                 leading: Checkbox(
+                  activeColor: AppColors.primary,
+                  checkColor: AppColors.textOnDark,
                   value: estaSeleccionado,
                   onChanged: (_) => viewmodel.cambiarEstadoProducto(producto),
                 ),
-                title: Text(producto.nombre),
-                subtitle: Text('${producto.precio.toStringAsFixed(2)} €'),
+                title: Text(producto.nombre,
+                    style: const TextStyle(color: AppColors.textOnLight)),
+                subtitle: Text('${producto.precio.toStringAsFixed(2)} €',
+                    style: const TextStyle(color: AppColors.textOnLight)),
                 trailing: estaSeleccionado
                     ? Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           IconButton(
+                            color: AppColors.primary,
                             icon: const Icon(Icons.remove),
                             onPressed: () => viewmodel.disminuirCantidad(producto),
                           ),
-                          Text('$cantidad'),
+                          Text('$cantidad',
+                          style: const TextStyle(color: AppColors.textOnLight, fontSize: 16),),
                           IconButton(
+                            color: AppColors.primary,
                             icon: const Icon(Icons.add),
                             onPressed: () => viewmodel.aumentarCantidad(producto),
                           ),
@@ -78,6 +84,8 @@ class _SeleccionProductoViewState extends State<SeleccionProductoView> {
           final totalProductos = viewmodel.productosSeleccionados.length;
           return totalProductos > 0
               ? FloatingActionButton(
+                  backgroundColor: AppColors.primary,
+                  foregroundColor: AppColors.textOnDark,
                   child: const Icon(Icons.check),
                   onPressed: () {
                     Navigator.pop(context, viewmodel.productosSeleccionados);

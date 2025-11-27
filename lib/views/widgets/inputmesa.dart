@@ -17,7 +17,7 @@ class InputNombreMesa extends StatelessWidget {
           border: const OutlineInputBorder(),
           prefixIcon: const Icon(Icons.table_restaurant, color: AppColors.textOnLight),
           enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: AppColors.textOnLight.withOpacity(0.3)),
+            borderSide: BorderSide(color: AppColors.textOnLight),
           ),
           focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: AppColors.primary, width: 2),

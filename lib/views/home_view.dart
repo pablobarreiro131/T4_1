@@ -77,9 +77,20 @@ class _HomeViewState extends State<HomeView> {
         builder: (context, child) {
           if (vm.pedidos.isEmpty) {
             return Center(
-              child: Text(
-                'No hay pedidos',
-                style: TextStyle(color: AppColors.textOnLight),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Icon(
+                    Icons.sentiment_dissatisfied,
+                    color: AppColors.primaryTransparent,
+                    size: 80,
+                  ),
+                  SizedBox(height: 8),
+                  Text(
+                    'Aun no hay pedidos...',
+                    style: TextStyle(color: AppColors.textOnLight),
+                  ),
+                ],
               ),
             );
           }
