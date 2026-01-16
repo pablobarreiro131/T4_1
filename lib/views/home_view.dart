@@ -24,6 +24,20 @@ class _HomeViewState extends State<HomeView> {
     if (result != null && mounted) {
       final nuevoPedido = result as Pedido;
       vm.agregarPedido(nuevoPedido);
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Pedido #${nuevoPedido.id} creado para ${nuevoPedido.idMesa}'),
+          backgroundColor: AppColors.primary,
+          behavior: SnackBarBehavior.floating,
+          duration: const Duration(seconds: 2),
+          action: SnackBarAction(
+            label: 'VER',
+            textColor: AppColors.textOnDark,
+            onPressed: () => _verResumenPedido(nuevoPedido),
+          ),
+        ),
+      );
     }
   }
 
