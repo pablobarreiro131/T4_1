@@ -33,7 +33,6 @@ class CrearPedido extends ChangeNotifier {
       id: contador++,
       idMesa: _idMesa,
       productos: _productosPedido,
-      fecha: DateTime.now(),
     );
     return pedido;
   }

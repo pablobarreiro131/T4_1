@@ -59,7 +59,7 @@ class ResumenPedidoView extends StatelessWidget {
                 ListTile(
                   contentPadding: EdgeInsets.zero,
                   title: Text(
-                    'Mesa / Cliente',
+                    'Mesa: ',
                     style: TextStyle(
                       color: AppColors.textOnLight,
                       fontSize: 12,

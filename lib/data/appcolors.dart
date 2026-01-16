@@ -9,5 +9,6 @@ class AppColors {
   static const Color success = Color(0xFF83C5BE);
   static const Color error = Color.fromARGB(255, 226, 124, 120);
   static const Color textBlack = Color(0xFF1D1D1D);
-  static const Color primaryTransparent = Color(0x80006D77); 
+  static const Color primaryTransparent = Color(0x80006D77);
+  static const Color accentTransparent = Color(0x80FF9F87);  
 }

@@ -4,13 +4,11 @@ class Pedido {
   final int id;
   final String idMesa;
   final Map<Producto, int> productos;
-  final DateTime fecha;
 
   Pedido({
     required this.id,
     required this.idMesa,
     required this.productos,
-    required this.fecha
   });
 
   double get total {
