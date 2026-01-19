@@ -1,4 +1,12 @@
 import 'package:flutter/material.dart';
+
+/// Clase que define los colores utilizados en la aplicación.
+/// Contiene colores primarios, de acento, de fondo, de texto y otros colores específicos para diferentes elementos de la interfaz de usuario.
+/// Cada color está definido como una constante estática para facilitar su uso en cualquier parte del código.
+/// Por ejemplo, `primary` es el color principal de la aplicación, `accent` es un color de acento utilizado para resaltar elementos importantes, y `backgroundSlate` es el color de fondo general de la aplicación.
+/// Otros colores son `ticketPaper` para el fondo de los tickets, `textOnDark` y `textOnLight` para el texto en fondos oscuros y claros, colores para indicar éxito y error...
+/// También se incluyen versiones transparentes de los colores primarios y de acento para efectos visuales.
+
 class AppColors {
   static const Color primary = Color(0xFF006D77); 
   static const Color accent = Color(0xFFFF9F87); 

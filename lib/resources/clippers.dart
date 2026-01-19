@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 
+/// Clipper personalizado para crear un borde dentado en la parte inferior de un widget.
+/// Se utiliza para dar un efecto visual de borde recortado en la parte inferior.
+/// Extiende CustomClipper<Path> y sobrescribe el método getClip para definir la forma del recorte.
+
+/// Clipper personalizado para crear un borde dentado en la parte inferior de un widget.
+/// Se utiliza para dar el efecto de recorte en la visualización de detalle del pedido.
 class RecorteInferiorClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
@@ -22,6 +28,8 @@ class RecorteInferiorClipper extends CustomClipper<Path> {
   bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }
 
+/// Clipper personalizado para crear un borde dentado en la parte derecha de un widget.
+/// Se utiliza para dar el efecto de recorte en la HomeView en el borde derecho de los tickets.
 class RecorteDerechoClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
@@ -46,6 +54,8 @@ class RecorteDerechoClipper extends CustomClipper<Path> {
   bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }
 
+/// Clipper personalizado para crear un borde dentado en la parte superior de un widget.
+/// Se utiliza para dar un efecto visual de borde recortado en la parte superior, en la vista de creación de pedidos. 
 class RecorteSuperiorClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {

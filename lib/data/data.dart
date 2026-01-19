@@ -1,5 +1,8 @@
 import '../models/producto.dart';
 
+/// Mock de todos los productos disponibles en la aplicación.
+/// Cada producto tiene un ID, un nombre y un precio.
+
 final List<Producto> mockProductos = [
   Producto(id: 1, nombre: 'Hamburguesa Doble con Queso', precio: 5.90),
   Producto(id: 2, nombre: 'Patatas Fritas Clásicas', precio: 2.50),
