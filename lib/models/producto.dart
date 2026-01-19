@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// Modelo que representa un producto en el sistema.
 class Producto {
   final int id;
   final String nombre;

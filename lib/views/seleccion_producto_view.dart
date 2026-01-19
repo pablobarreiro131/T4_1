@@ -3,6 +3,10 @@ import '../../models/producto.dart';
 import '../viewmodels/seleccion_producto.dart';
 import '../data/appcolors.dart';
 
+/// Vista para la selección de productos.
+/// Permite al usuario seleccionar productos y ajustar sus cantidades.
+/// Devuelve los productos seleccionados al cerrar la vista.
+
 class SeleccionProductoView extends StatefulWidget {
   final Map<Producto, int>? productosIniciales;
 

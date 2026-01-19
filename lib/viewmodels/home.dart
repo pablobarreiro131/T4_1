@@ -3,14 +3,23 @@ import '../models/pedido.dart';
 import '../models/producto.dart';
 import '../data/data.dart';
 
+/// ViewModel para la pantalla principal.
+/// Gestiona la lista de pedidos y proporciona métodos para agregar nuevos pedidos y cargar datos iniciales.
+
 class HomeViewModel extends ChangeNotifier {
   final List<Pedido> _pedidos = [];
 
   List<Pedido> get pedidos => _pedidos;
 
+/// Constructor que carga datos iniciales al crear una instancia del ViewModel.
+/// Se llama al método `_cargarDatosIniciales` para poblar la lista de pedidos con datos de ejemplo.
+
   HomeViewModel() {
     _cargarDatosIniciales();
   }
+
+/// Aquí se guardan una serie de pedidos de mock que sirven para que la aplicación no empiece vacía.
+/// Se cargan 3 pedidos con diferentes productos y cantidades. En diferentes mesas.
 
   void _cargarDatosIniciales() {
     
@@ -45,6 +54,10 @@ class HomeViewModel extends ChangeNotifier {
     _pedidos.addAll([pedido1, pedido2, pedido3]);
     notifyListeners();
   }
+
+/// Agrega un nuevo pedido a la lista de pedidos.
+/// Recibe un objeto `Pedido` como parámetro y lo añade a la lista.
+/// Se utiliza en HomeView para actualizar la lista cuando se crea un nuevo pedido.
 
   void agregarPedido(Pedido pedido) {
     _pedidos.add(pedido);

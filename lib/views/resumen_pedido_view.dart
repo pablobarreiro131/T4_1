@@ -3,6 +3,10 @@ import '../models/pedido.dart';
 import '../data/appcolors.dart';
 import '../resources/clippers.dart';
 
+/// Pantalla que muestra el resumen en detalle de un pedido.
+/// Muestra la mesa, los productos con sus cantidades y precios, y el total a pagar.
+/// Recibe la información del pedido a través de la ruta.
+
 class ResumenPedidoView extends StatelessWidget {
   static const routeName = '/resumen';
 

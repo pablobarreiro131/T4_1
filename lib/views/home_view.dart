@@ -5,6 +5,8 @@ import 'crear_pedido_view.dart';
 import '../data/appcolors.dart';
 import '../resources/clippers.dart';
 
+/// Pantalla principal que muestra la lista de pedidos.
+/// Permite crear nuevos pedidos y ver el resumen de pedidos existentes.
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});

@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import '../../data/appcolors.dart';
 import '../../resources/clippers.dart';
 
+/// Widget de pie de página que muestra el total y acciones para guardar, cancelar o ver el resumen del pedido.
+/// Recibe el total, si el pedido es válido y callbacks para las acciones.
+
 class FooterAcciones extends StatelessWidget {
   final double total;
   final bool esValido;

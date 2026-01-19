@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import '../../models/producto.dart';
 import '../../data/appcolors.dart';
 
+/// Widget que muestra la lista de productos seleccionados con sus cantidades y subtotales.
+/// Si no hay productos seleccionados, muestra un mensaje indicándolo.
+/// Recibe un mapa de productos con sus cantidades como parámetro.
+
 class ListaProductosSeleccionados extends StatelessWidget {
   final Map<Producto, int> productos;
 
